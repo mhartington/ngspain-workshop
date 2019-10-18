@@ -5,10 +5,15 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+  <ion-list>
+    <ion-item *ngFor="let todo of todos" [routerLink]="['/', 'detail', todo.id]">
+      Todo: {{ todo.text }}
+      <ion-note slot="start">{{ todo.id }}</ion-note>
+      <ion-button slot="end" (click)="logMe($event)">
+        <ion-icon name="trash" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="showModal()">Add Todo</ion-button>
 </ion-content>

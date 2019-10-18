@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        Close
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Add Todo</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <form (ngSubmit)="onSubmit()">
+      <ion-item>
+        <ion-label>Add Todo</ion-label>
+        <ion-input [(ngModel)]="newTodo" name="todo"></ion-input>
+      </ion-item>
+      <img [src]="photo" *ngIf="photo">
+      <ion-button type="submit" expand="block">Add Todo</ion-button>
+      <ion-button (click)="takePicture()">Take photo</ion-button>
+    </form>
+  </ion-list>
+</ion-content>
