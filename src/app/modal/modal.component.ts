@@ -16,7 +16,7 @@ export class ModalComponent implements OnInit {
   constructor( private modalCtrl: ModalController, private todoService: TodosService, private sanitizer: DomSanitizer) {}
   ngOnInit() {}
   onSubmit() {
-    this.todoService.addItem(this.newTodo, this.photo);
+    this.todoService.addItem(this.newTodo);
     this.close();
   }
   close() {

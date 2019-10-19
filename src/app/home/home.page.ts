@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertController, ToastController, ActionSheetController, ModalController } from '@ionic/angular';
+import { AlertController, ToastController, ActionSheetController, ModalController, Platform } from '@ionic/angular';
 import {TodosService} from '../todos.service';
 import { ModalComponent } from '../modal/modal.component';
 
@@ -10,15 +10,18 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class HomePage {
   todos;
+  isIos
   constructor(
     private alertCtrl: AlertController,
     private toastCtrl: ToastController,
     private actionSheetCtrl: ActionSheetController,
     private todoService: TodosService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private plt: Platform
   ) {}
   ionViewDidEnter() {
     this.todos = this.todoService.getItems();
+    isIos = this.plt.is('ios')
   }
   async showModal(){
     const modal = await this.modalCtrl.create({
